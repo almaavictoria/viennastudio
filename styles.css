@@ -1,0 +1,648 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-fondo: #f7f4f2;
+            --color-fondo-secundario: #f7f4f2;
+            --color-texto-principal: #786464;
+            --color-texto-secundario: #e7e7e7;
+            --color-acento: #c1aca9;
+            --color-acento-oscuro: #9b7474;
+            --color-acento-hover: #786464;
+        }
+
+        body {
+            font-family: 'Futura', sans-serif; 
+            color: var(--color-texto-principal);
+            background-color: var(--color-fondo);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative; /* Necesario para el fondo abstracto */
+        }
+        
+        /* --- FONDO ABSTRACTO CON OPACIDAD BAJA --- */
+        body::before {
+            content: '';
+            position: fixed; /* Fijo para que no se mueva con el scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Detrás de todo el contenido */
+            background-image: url('/multimedia/fondoabstracto1.jpg'); /* <-- TU RUTA A LA IMAGEN */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; /* Opacidad baja (poca "fuerza") */
+            /* filter: blur(2px); Opcional: un desenfoque suave */
+        }
+        /* --- FIN DEL FONDO ABSTRACTO --- */
+
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #9b7474; 
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #a6948e1a;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-texto-secundario);
+            letter-spacing: 3px;
+            font-family: 'Playfair Display', serif; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-texto-secundario);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-family:'Futura', sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-texto-principal);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* El fondo ahora es transparente para dejar ver la textura */
+            background-color: transparent; 
+            position: relative;
+            padding: 120px 40px 80px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            padding-right: 40px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: var(--color-texto-principal);
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif; 
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 50px;
+            font-weight: 300;
+            color: var(--color-texto-principal);
+            line-height: 1.7;
+            font-family: 'Futura', sans-serif;
+        }
+
+        /* --- HERO VISUAL AHORA CONTIENE LA IMAGEN --- */
+        .hero-visual {
+            /* Quitamos el background-color */
+            border-radius: 20px; /* Un radio más moderno */
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(120, 100, 100, 0.08);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* La imagen cubre el espacio */
+        }
+        /* Quitamos el .hero-visual-text */
+
+        .cta-button {
+            background-color: var(--color-acento-oscuro);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 50px;
+            font-weight: 500;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-acento-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(120, 100, 100, 0.2);
+        }
+
+        .section {
+            padding: 120px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative; /* Asegura que esté sobre el fondo */
+        }
+
+        .section-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--color-texto-principal);
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--color-texto-principal);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-weight: 300;
+            font-family:'Futura', sans-serif;
+        }
+
+        .problem-solution {
+            background-color: var(--color-fondo-secundario);
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .problem-solution-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 28px;
+            line-height: 1.8;
+            color: var(--color-texto-principal);
+            font-weight: 300;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .product-card {
+            background-color: var(--color-fondo-secundario);
+            padding: 60px 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(120, 100, 100, 0.08);
+            border-color: rgba(0,0,0,0.01);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-acento);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: var(--color-texto-principal);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: var(--color-texto-principal);
+            font-weight: 300;
+            font-family:'Futura', sans-serif;
+        }
+
+        .lead-magnet {
+            background-color: var(--color-acento-oscuro);
+            padding: 100px 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-magnet::before {
+            content: '✦';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .lead-magnet h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .lead-magnet p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            font-weight: 300;
+            position: relative;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .lead-form {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .lead-form input {
+            padding: 18px 30px;
+            font-size: 15px;
+            border: none;
+            min-width: 350px;
+            background-color: #9a8887;
+            color: var(--color-texto-principal);
+            border-radius: 50px;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .lead-form input::placeholder {
+            color: #9a8887;
+        }
+
+        .philosophy-section {
+            background-color: transparent; /* Deja ver el fondo de textura */
+            padding: 120px 60px;
+        }
+
+        .philosophy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content p {
+            font-size: 22px;
+            line-height: 1.9;
+            color: var(--color-texto-principal);
+            margin-bottom: 35px;
+            text-align: center;
+            font-weight: 300;
+            font-family:'Futura', sans-serif;
+        }
+        
+        /* --- ESTILO PARA LA IMAGEN EN "FILOSOFÍA" --- */
+        .philosophy-image {
+            width: 100%;
+            max-width: 800px; /* Limita el tamaño */
+            margin: 40px auto; /* Espacio antes y después */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .philosophy-image img {
+            width: 100%;
+            display: block; /* Evita espacios en blanco */
+        }
+        /* --- FIN ESTILO --- */
+
+
+        .quote {
+            font-style: italic;
+            font-size: 32px;
+            color: var(--color-acento-oscuro);
+            text-align: center;
+            padding: 60px 40px;
+            margin: 60px 0;
+            background-color: var(--color-fondo-secundario);
+            border-radius: 20px;
+            font-weight: 300;
+            line-height: 1.6;
+            font-family: 'Playfair Display', serif;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .quote small {
+            font-size: 18px;
+            opacity: 0.7;
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .shop-section {
+            background-color: (var(--color-fondo-primario));
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .category {
+            margin-bottom: 80px;
+        }
+
+        .category h3 {
+            font-size: 32px;
+            color: var(--color-texto-principal);
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .blog-section {
+            padding: 120px 60px;
+            background-color: transparent; /* Deja ver el fondo de textura */
+            position: relative;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        /* --- ESTILOS PARA TARJETA DE BLOG CON IMAGEN --- */
+        .blog-card {
+            background-color: var(--color-fondo-secundario);
+            transition: all 0.3s;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden; /* Importante para la imagen */
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 250px; /* Altura fija para consistencia */
+            object-fit: cover;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(120, 100, 100, 0.08);
+        }
+
+        .blog-card h3 {
+            color: var(--color-texto-principal);
+            font-size: 22px;
+            margin: 30px 40px 20px 40px; /* Espaciado para el texto */
+            font-weight: 400;
+            line-height: 1.4;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .blog-card p {
+            color: var(--color-texto-principal);
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 300;
+            font-family: 'Futura', sans-serif;
+            margin: 0 40px 40px 40px; /* Espaciado para el texto */
+        }
+        /* --- FIN ESTILOS BLOG --- */
+
+
+        .contact-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, var(--color-texto-principal) 0%, var(--color-acento-oscuro) 100%);
+            color: white;
+            position: relative;
+        }
+        
+        /* --- NUEVO LAYOUT DE CONTACTO (2 COLUMNAS) --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .contact-text .section-title,
+        .contact-text .section-subtitle {
+            text-align: left;
+            margin-left: 0;
+            max-width: 100%;
+        }
+
+        .contact-form {
+            max-width: 100%; /* Ocupa todo el contenedor de texto */
+            margin: 60px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-visual {
+            width: 100%;
+            height: 600px; /* Altura fija */
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .contact-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* --- FIN LAYOUT CONTACTO --- */
+
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 18px 25px;
+            font-size: 15px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: var(--color-texto-principal);
+            font-family:'Futura', sans-serif;
+            border-radius: 15px;
+        }
+
+        .contact-form textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 80px; /* Más espacio después del contenedor */
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            letter-spacing: 1px;
+            font-weight: 400;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+
+        footer {
+            background-color: var(--color-fondo);
+            color: var(--color-texto-secundario);
+            text-align: center;
+            padding: 50px 40px;
+            font-size: 13px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-family:'Futura', sans-serif;
+            position: relative;
+        }
+
+        footer p:last-child {
+            margin-top: 15px;
+            font-size: 12px;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        .steps-visual {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            margin: 80px 0;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-acento);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            font-weight: 300;
+            font-family: 'Futura', sans-serif;
+        }
+
+        .step-text {
+            font-size: 18px;
+            color: #786464;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.5;
+        }
+        
+        .step-subtext {
+            font-size: 15px;
+            color: #786464;
+            font-weight: 300;
+            font-family: 'Futura', sans-serif;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .products-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr; /* Una columna en tablet */
+            }
+            .contact-visual {
+                height: 300px; /* Menos altura en tablet */
+                order: -1; /* Pone la imagen arriba del form */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px 30px;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .section {
+                padding: 80px 30px;
+            }
+            .hero-title {
+                font-size: 42px;
+            }
+            .section-title {
+                font-size: 36px;
+            }
+            .problem-solution-text {
+                font-size: 22px;
+            }
+            .lead-form input {
+                min-width: 100%;
+            }
+            .products-grid {
+                grid-template-columns: 1fr; /* Asegura una columna */
+            }
+        }
