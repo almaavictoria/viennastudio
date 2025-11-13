@@ -70,9 +70,10 @@
         <p>
             Descargá nuestro Mini Planner Semanal gratuito<br>y empezá a organizar tu semana con intención.
         </p>
-        <form class="lead-form">
-            <input type="email" placeholder="Tu email aquí" required>
-            <button type="submit" class="cta-button">¡LO QUIERO!</button>
+        <form class="lead-form" action="https://formspree.io/f/mqawawnq" method="POST">
+    <input type="email" name="email" placeholder="Tu email aquí" required>
+    <input type="hidden" name="tipo" value="Lead Magnet - Mini Planner">
+    <button type="submit" class="cta-button">¡LO QUIERO!</button>
         </form>
     </section>
 
@@ -195,12 +196,12 @@
                 <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
                     ¿Tenés una consulta, una idea para colaborar o solo querés saludar?<br>Nos encanta conectar.
                 </p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Tu nombre" required>
-                    <input type="email" placeholder="Tu email" required>
-                    <textarea placeholder="Tu mensaje" required></textarea>
-                    <button type="submit" class="cta-button" style="background-color: white; color: var(--color-texto-principal);">ENVIAR</button>
-                </form>
+<form class="contact-form" action="https://formspree.io/f/mqawawnq" method="POST">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu email" required>
+    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+    <button type="submit" class="cta-button">ENVIAR</button>
+</form>
             </div>
             <div class="contact-visual">
                 <img src="multimedia/bussineswoman.jpg" alt="Emprendedora profesional y estética">
@@ -234,22 +235,23 @@
         });
 
         // Form handlers
-        const leadForm = document.querySelector('.lead-form');
-        if(leadForm) {
-            leadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Gracias! Pronto recibirás tu regalo en tu email.');
-                leadForm.reset();
-            });
-        }
-        
-        const contactForm = document.querySelector('.contact-form');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Gracias por tu mensaje! Te responderemos pronto.');
-                contactForm.reset();
-            });
+const leadForm = document.querySelector('.lead-form');
+if(leadForm) {
+    leadForm.addEventListener('submit', function(e) {
+        // NO pongas e.preventDefault() aquí
+        alert('¡Gracias! Pronto recibirás tu regalo en tu email.');
+        // El formulario se enviará automáticamente después del alert
+    });
+}
+
+const contactForm = document.querySelector('.contact-form');
+if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // NO pongas e.preventDefault() aquí
+        alert('¡Gracias por tu mensaje! Te responderemos pronto.');
+        // El formulario se enviará automáticamente después del alert
+    });
+}
         }
 
         // Navbar scroll effect
@@ -267,5 +269,6 @@
 </body>
 
 </html>
+
 
 
