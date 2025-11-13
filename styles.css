@@ -32,7 +32,7 @@
             width: 100%;
             height: 100%;
             z-index: -1; /* Detrás de todo el contenido */
-            background-image: url('/multimedia/fondoabstracto1.jpg'); /* <-- TU RUTA A LA IMAGEN */
+            background-image: url('multimedia/fondoabstracto1.jpg'); /* <-- TU RUTA A LA IMAGEN */
             background-size: cover;
             background-position: center;
             opacity: 0.4; /* Opacidad baja (poca "fuerza") */
@@ -645,4 +645,5 @@
             .products-grid {
                 grid-template-columns: 1fr; /* Asegura una columna */
             }
+
         }
